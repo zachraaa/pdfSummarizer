@@ -10,14 +10,6 @@ from langchain.llms import OpenAI
 from langchain.chat_models import ChatOpenAI
 from langchain.callbacks import get_openai_callback
 
-def load_openai_api_key():
-    dotenv_path = "openai.env"
-    load_dotenv(dotenv_path)
-    openai_api_key = os.getenv("OPENAI_API_KEY")
-    if not openai_api_key:
-        raise ValueError(f"Unable to retrieve OPENAI_API_KEY from {dotenv_path}")
-    return openai_api_key
-
 def process_text(text):
     # Split the text into chunks using Langchain's CharacterTextSplitter
     text_splitter = CharacterTextSplitter(
@@ -40,7 +32,7 @@ def main():
     st.divider()
 
     try:
-        os.environ["OPENAI_API_KEY"] = load_openai_api_key()
+        os.environ["OPENAI_API_KEY"] = "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"
     except ValueError as e:
         st.error(str(e))
         return
